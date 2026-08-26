@@ -1,32 +1,31 @@
 像素動物素材放置說明
 ========================
 
-把你的像素動物素材放進這個資料夾（public/animals/<動物id>/），並在 config.json 登記。
-支援四種動物 id：sheep（綿羊）、kitten（小貓）、chicken（白羽雞）、elk（麋鹿）
+你的素材放在 public/animals/，並在 config.json 登記即可。
 
-支援的素材類型（擇一）：
-  1) 靜態圖 / GIF   -> 直接放圖片，GIF 會自動播放（當作走路動畫）
-     例：public/animals/sheep/walk.gif
-     例：public/animals/sheep/walk.png
+目前的動物 id 與對應素材：
+  sheep                 -> Sheep/咩咩.png
+  kitten                -> Kitty/小貓.png
+  chicken（大雞）        -> kitten/大雞.png
+  elk                   -> elk/麋鹿.png
+  cow（小牛，有走路MP4）  -> Cow/小牛.mp4 + Cow/小牛.png
+  leopard（雪豹）        -> Leopard/雪豹.png
+  arknights_niandao（年導） -> Arknights/年導.png
+  arknights_wangbie（望別） -> Arknights/望別.png
 
-  2) MP4 走路動畫    -> 地圖標記會用 <video> 播放（模擬走路）
-     例：public/animals/sheep/walk.mp4
+支援類型（在 config.json 的 type 欄位）：
+  image  -> 靜態圖 / GIF（GIF 會自動播放）
+  video  -> MP4 走路動畫（地圖標記用 <video> 內嵌播放，模擬走路）
+  sprite -> 水平連拍圖（frames/frameW/frameH 依幀播放）
 
-  3) sprite sheet    -> 一張水平連拍圖，按幀播放
-     例：public/animals/sheep/walk-sprite.png （8 格，每格 48x48）
+新增或替換素材步驟：
+  1) 把檔案放到 public/animals/<動物id>/ 下
+  2) 編輯 public/animals/config.json 登記 type 與 src
+  3) 重新執行 npm run dev（或重新建置）
 
-config.json 登記範例（把 null 換成以下任一）：
-
+config.json 格式範例：
   {
-    "sheep": { "type": "image",  "src": "/animals/sheep/walk.gif" },
-    "kitten": { "type": "video",  "src": "/animals/kitten/walk.mp4" },
-    "chicken": { "type": "sprite", "src": "/animals/chicken/walk-sprite.png", "frames": 8, "frameW": 48, "frameH": 48 },
-    "elk": null
+    "sheep":  { "type": "image", "src": "/animals/Sheep/咩咩.png" },
+    "cow":    { "type": "video", "src": "/animals/Cow/小牛.mp4", "thumb": "/animals/Cow/小牛.png" },
+    "chicken": { "type": "sprite", "src": "/animals/kitten/walk-sprite.png", "frames": 8, "frameW": 48, "frameH": 48 }
   }
-
-  "thumb" 可另指選擇畫面用的預覽圖（可省略，會用 src）。
-
-沒設定或檔案不存在時，自動退回內建的像素動物（綿羊/小貓/白羽雞/麋鹿），
-等你放入素材後，地圖定位圖標就會改用你的檔案。
-
-※ 檔案放好後，重新執行「npm run dev」（或重新建置）即可看到效果。
