@@ -1,10 +1,6 @@
 {
-  "sheep": { "type": "image", "src": "/animals/Sheep/咩咩.png" },
   "kitten": { "type": "image", "src": "/animals/Kitty/小貓.png" },
   "chicken": { "type": "image", "src": "/animals/kitten/大雞.png" },
   "elk": { "type": "image", "src": "/animals/elk/麋鹿.png" },
-  "cow": { "type": "video", "src": "/animals/Cow/小牛.mp4", "thumb": "/animals/Cow/小牛.png" },
-  "leopard": { "type": "image", "src": "/animals/Leopard/雪豹.png" },
-  "arknights_niandao": { "type": "image", "src": "/animals/Arknights/年導.png" },
   "arknights_wangbie": { "type": "image", "src": "/animals/Arknights/望別.png" }
 }
